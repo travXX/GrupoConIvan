@@ -5,18 +5,25 @@ import java.util.Scanner;
 public class Ex4_19 {
 	public static void main(String[]args) {
 		Scanner lector = new Scanner(System.in);
-		System.out.println("Que numero quieres saber si es primo o no?");
+		System.out.println("Cuantos numeros primos quieres?");
 		int numUser = lector.nextInt();
-		int res=0;
-			for(int i=0;i<numUser;i++) {
-			for(int cont=2;cont<numUser;cont++) {
-			res=numUser%cont;
-				if(res==0) {
-					break;
+		lector.nextLine();
+		int numVuelta=0, buscaPrimo=1, Find=0;
+		while(numVuelta < numUser) {
+			
+			for(int i = buscaPrimo / 2 ; i >= 2 ; i--) {
+				if(buscaPrimo % i == 0) {
+					Find++;
 				}
 			}
-			if(res!=0) {
-			System.out.print(numUser+"\t");
+			if(Find>0) {
+				buscaPrimo++;
+				Find = 0;
+			}else {
+				numVuelta++;
+				System.out.println(buscaPrimo);	
+				buscaPrimo++;
+				Find = 0;
 			}
 		}
 	}
